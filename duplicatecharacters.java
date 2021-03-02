@@ -1,3 +1,5 @@
+//Write a program to find the duplicate characters in a String. Print each character how many times it occurs. 
+
 import java.util.Scanner;
 import java.util.Arrays;
 public class Ques1 {
