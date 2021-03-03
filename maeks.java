@@ -1,80 +1,67 @@
-package j15_02_2021;
-
-import java.util.Scanner;
-
-public class maeks {
-
-	static String[][] calc(int a[][],int n,int m)
+import java.util.*;
+public class Main
+{
+	static String[][] compute(int b[][],int n,int m)
 	{
-		int avg[]=new int[n];
-		int sumz=0;
-		String grade[][]=new String[n][m];
-		for(int i=0;i<n;i++)
-		{
-			sumz=0;
-			for(int j=0;j<m;j++)
-			{
-				sumz+=a[i][j];
-			}
-			avg[i]=sumz/m;
-			//System.out.println(avg[i]);
-
-		}
-		
-		for(int i=0;i<n;i++)
-		{
-			for(int j=0;j<m;j++)
-			{
-				if(a[i][j]-avg[i]>=5)
-				{
-					grade[i][j]="A";
-				}
-				
-				else if(a[i][j]-avg[i]>=0)
-				{
-					grade[i][j]="B";
-				
-				}
-				else if(a[i][j]-avg[i]<=-4)
-				{
-					grade[i][j]="C";
-				}
-				
-				else
-				{
-					grade[i][j]="D";
-				}
-			}
-		}
-		return(grade);
+	    int tot=0;
+	    int avg[]=new int[100];
+	    String grade[][]=new String[n][m];
+	     for(int i=0;i<n;i++)
+	     {
+	     
+	    for(int j=0;j<m;j++)
+	    {
+	       tot+=b[i][j];
+	        
+	    }
+	    avg[i]=tot/m;
+	    tot=0;
+	      }
+	      
+	     for(int i=0;i<n;i++){
+	         System.out.println("Avg of subject"+(i+1)+"="+avg[i]);
+	     }
+	     
+	    for(int i=0;i<n;i++)
+	    for(int j=0;j<m;j++)
+	    {
+	        if(b[i][j]-avg[i]>=5)
+	        grade[i][j]="A";
+	        else if(b[i][j]-avg[i]>=0 && b[i][j]-avg[i]<=4)
+	        grade[i][j]="B";
+	        else if(b[i][j]-avg[i]<0 && b[i][j]-avg[i]>=-4)
+	        grade[i][j]="C";
+	        else if(b[i][j]-avg[i]<-5)
+	        grade[i][j]="D";
+	    }
+	    
+	    return (grade);
 	}
 	
 	public static void main(String[] args) {
-		Scanner s=new Scanner(System.in);
-		System.out.println("Enter n,m");
-		int n=s.nextInt();
-		int m=s.nextInt();
-		int a[][]=new int[n][m];
-	      for(int i=0;i<n;i++)
-	      {
-	    	  for(int j=0;j<m;j++)
-	    	  {
-	    		  a[i][j]=s.nextInt();
-	    	  }
-	      }
-		String str[][]=new String[n][m];
-	     str=calc(a,n,m);
-	      
-	      for(int i=0;i<n;i++)
-	      {
-	    	  for(int j=0;j<m;j++)
-	    	  {
-	    			System.out.print(str[i][j]);
+	Scanner sc=new Scanner(System.in);
+	int m,n;
+    
+	System.out.println("Enter number of students");
+	m=sc.nextInt();
+	System.out.println("Enter number of subjects");
+	n=sc.nextInt();
+	    int p[][]=new int[n][m];
+	    String s[][]=new String[n][m];
+	    for(int i=0;i<n;i++)
+	    for(int j=0;j<m;j++)
+	    {
+	        p[i][j]=sc.nextInt();
+	    }
+	
+	    s=compute(p,n,m);
+	    for(int i=0;i<n;i++)
+	    for(int j=0;j<m;j++)
+	    {
+	        System.out.println("grade of student "+(i+1)+" in subject "+(j+1)+":"+s[i][j]);
+	    }
 
-	    	  }
-	  		System.out.println();
-
-	      }
 	}
-
+	
+	
 }
